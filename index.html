@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>AutomizeAI — Automação Inteligente para Pequenas Empresas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AutomizeAI é a plataforma SaaS B2B para automação de processos e integração com IA generativa e ferramentas Microsoft.">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0e9488;
+      --secondary: #184248;
+      --accent: #f9c846;
+      --light: #f5fffd;
+      --dark: #0c2322;
+      --gray: #e1f3f0;
+      --radius: 10px;
+    }
+    *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--secondary);
+      background: var(--light);
+      min-height: 100vh;
+    }
+    header {
+      background: white;
+      box-shadow: 0 2px 8px #0001;
+      padding: 20px 0;
+      position: sticky; top: 0; z-index: 99;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -1px;
+      text-decoration: none;
+    }
+    nav {
+      float: right;
+    }
+    nav a {
+      color: var(--secondary);
+      text-decoration: none;
+      margin-left: 32px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav a.cta {
+      color: white;
+      background: var(--primary);
+      padding: 10px 26px;
+      border-radius: var(--radius);
+      margin-left: 24px;
+      transition: background 0.2s;
+    }
+    nav a.cta:hover { background: var(--accent); color: var(--secondary); }
+    nav a:hover { color: var(--primary); }
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 70px 0 40px 0;
+      background: linear-gradient(90deg, var(--light) 70%, #d6f6f2 100%);
+      border-bottom: 1px solid var(--gray);
+    }
+    .hero-content {
+      max-width: 55%;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      line-height: 1.08;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 28px;
+      color: var(--secondary);
+      max-width: 520px;
+    }
+    .hero .cta-hero {
+      background: var(--accent);
+      color: var(--dark);
+      font-weight: 700;
+      padding: 16px 38px;
+      border-radius: var(--radius);
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0e948822;
+      transition: background 0.2s, color 0.2s;
+    }
+    .hero .cta-hero:hover { background: var(--primary); color: white; }
+    .hero-illustration {
+      width: 38%;
+      min-width: 220px;
+      text-align: center;
+    }
+    .hero-illustration img {
+      width: 90%;
+      max-width: 320px;
+      filter: drop-shadow(0 2px 20px #0e948844);
+    }
+    /* Features */
+    .features {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      margin: 64px 0;
+      flex-wrap: wrap;
+    }
+    .feature-card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px #0e948810;
+      padding: 32px 24px 24px 24px;
+      flex: 1 1 240px;
+      min-width: 260px;
+      max-width: 340px;
+      transition: box-shadow 0.2s;
+      border-top: 4px solid var(--primary);
+    }
+    .feature-card h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+    .feature-card p { color: #35605a; }
+    /* Plans */
+    .plans {
+      margin: 70px 0 40px 0;
+      text-align: center;
+    }
+    .plans h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+    .plan-cards {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .plan {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px #0e948810;
+      padding: 38px 28px 28px 28px;
+      min-width: 240px;
+      max-width: 300px;
+      margin-bottom: 24px;
+      border-top: 4px solid var(--accent);
+      position: relative;
+    }
+    .plan.popular {
+      border-top: 4px solid var(--primary);
+      box-shadow: 0 8px 32px #0e948833;
+    }
+    .plan h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .plan .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .plan ul {
+      list-style: none;
+      margin-bottom: 18px;
+      color: #35605a;
+      min-height: 110px;
+    }
+    .plan ul li {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .plan .cta-plan {
+      background: var(--primary);
+      color: white;
+      padding: 10px 0;
+      width: 100%;
+      border-radius: var(--radius);
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1rem;
+    }
+    .plan .cta-plan:hover { background: var(--accent); color: var(--dark);}
+    .plan .popular-badge {
+      position: absolute;
+      right: 18px;
+      top: -16px;
+      background: var(--primary);
+      color: white;
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    /* Steps */
+    .steps-section {
+      background: var(--gray);
+      padding: 54px 0 54px 0;
+      margin: 0 -40px;
+    }
+    .steps {
+      display: flex;
+      gap: 36px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .step {
+      flex: 1 1 180px;
+      min-width: 200px;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px #0e948810;
+      padding: 24px 18px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .step .step-number {
+      background: var(--primary);
+      color: white;
+      font-size: 1.5rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .step h4 { margin-bottom: 8px; color: var(--primary); }
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #ddf9f4;
+      padding: 30px 0 15px 0;
+      text-align: center;
+      font-size: 0.95rem;
+      margin-top: 40px;
+    }
+    @media (max-width: 960px) {
+      .hero { flex-direction: column; text-align: center; }
+      .hero-content, .hero-illustration { max-width: 100%; width: 100%; }
+      .features, .plan-cards, .steps { flex-direction: column; align-items: center; }
+      nav { float: none; text-align: center; margin-top: 16px; }
+    }
+    @media (max-width: 600px) {
+      .container { width: 98%; }
+      .hero h1 { font-size: 2rem; }
+      .plans h2 { font-size: 1.2rem; }
+      .plan-cards { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
+      <a href="#" class="logo">AutomizeAI</a>
+      <nav>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#planos">Planos</a>
+        <a href="#como-funciona">Como Funciona</a>
+        <a href="#contato" class="cta">Teste Grátis</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>Automação Inteligente para Pequenas Empresas</h1>
+        <p>Economize tempo e dinheiro automatizando tarefas repetitivas com IA generativa (Azure OpenAI) e integrações prontas com Microsoft Teams, Outlook, Excel e SharePoint. Tudo em uma plataforma SaaS B2B simples, segura e escalável.</p>
+        <button class="cta-hero" onclick="window.location.href='#contato'">Teste grátis sua primeira automação</button>
+      </div>
+      <div class="hero-illustration">
+        <img src="https://assets-global.website-files.com/63d2bcdb7e8de8a6b9e5e947/63d2bcdb7e8de8e9e2e5e948_automation-illustration.svg" alt="Automação SaaS">
+      </div>
+    </section>
+    <!-- FEATURES SECTION -->
+    <div class="container" id="funcionalidades">
+      <div class="features">
+        <div class="feature-card">
+          <h3>Chatbots Inteligentes</h3>
+          <p>Atenda clientes automaticamente via Teams, WhatsApp ou no site, resolvendo dúvidas frequentes com IA treinável.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Geração de Documentos</h3>
+          <p>Crie contratos, propostas e relatórios em segundos a partir de modelos Word/Excel, preenchidos por IA.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Extração de Dados</h3>
+          <p>Extraia informações de PDFs e envie automaticamente para Excel, SharePoint ou email em poucos cliques.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Integração Microsoft</h3>
+          <p>Conecte Teams, Outlook e SharePoint em minutos. Automatize fluxos com Microsoft Graph API.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Dashboard Unificado</h3>
+          <p>Acompanhe todas automações, relatórios de economia de tempo e resultados em um só lugar.</p>
+        </div>
+      </div>
+    </div>
+    <!-- PLANS SECTION -->
+    <section class="plans" id="planos">
+      <h2>Planos que crescem com você</h2>
+      <div class="plan-cards">
+        <div class="plan">
+          <h3>Freemium</h3>
+          <div class="price">R$ 0</div>
+          <ul>
+            <li>1 automação básica</li>
+            <li>Integração Teams/Outlook</li>
+            <li>Geração simples de documentos</li>
+            <li>Suporte via email</li>
+          </ul>
+          <button class="cta-plan" onclick="window.location.href='#contato'">Comece Grátis</button>
+        </div>
+        <div class="plan popular">
+          <div class="popular-badge">Mais Popular</div>
+          <h3>Pro</h3>
+          <div class="price">R$ 99<span style="font-size:1rem;font-weight:400;">/mês</span></div>
+          <ul>
+            <li>Até 10 automações</li>
+            <li>Integrações premium</li>
+            <li>Dashboard e relatórios</li>
+            <li>Suporte rápido</li>
+          </ul>
+          <button class="cta-plan" onclick="window.location.href='#contato'">Quero Pro</button>
+        </div>
+        <div class="plan">
+          <h3>Business</h3>
+          <div class="price">R$ 399<span style="font-size:1rem;font-weight:400;">/mês</span></div>
+          <ul>
+            <li>Automação ilimitada</li>
+            <li>Customizações avançadas</li>
+            <li>Suporte prioritário</li>
+            <li>Integração via API</li>
+          </ul>
+          <button class="cta-plan" onclick="window.location.href='#contato'">Fale com Vendas</button>
+        </div>
+      </div>
+    </section>
+    <!-- STEPS / COMO FUNCIONA -->
+    <section class="steps-section" id="como-funciona">
+      <div class="container">
+        <h2 style="text-align:center;color:var(--primary);margin-bottom:32px;font-size:1.7rem;">Como funciona o AutomizeAI?</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Valide sua Necessidade</h4>
+            <p>Identifique tarefas manuais e repetitivas do seu negócio.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Monte sua Automação</h4>
+            <p>Escolha um template pronto ou crie um fluxo personalizado via drag-and-drop.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Integre com Microsoft</h4>
+            <p>Conecte Teams, Outlook ou SharePoint em poucos minutos.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h4>Rode e Analise</h4>
+            <p>Execute automações e acompanhe relatórios de economia de tempo e resultados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CONTATO / CTA FINAL -->
+    <section class="container" id="contato" style="text-align:center;margin-top:42px;">
+      <h2 style="color:var(--primary);margin-bottom:16px;">Comece agora sua automação inteligente</h2>
+      <p style="font-size:1.15rem;max-width:480px;margin:0 auto 18px auto;">
+        Solicite acesso grátis ao MVP do AutomizeAI e revolucione a produtividade do seu negócio!
+      </p>
+      <form style="margin:0 auto;max-width:400px;text-align:left;padding:22px;background:white;border-radius:var(--radius);box-shadow:0 2px 8px #0e948810;" autocomplete="off">
+        <label style="font-weight:600;color:var(--primary);">Nome</label>
+        <input name="name" required style="width:100%;margin-bottom:12px;padding:10px;border:1px solid var(--gray);border-radius:6px;">
+        <label style="font-weight:600;color:var(--primary);">Empresa</label>
+        <input name="company" style="width:100%;margin-bottom:12px;padding:10px;border:1px solid var(--gray);border-radius:6px;">
+        <label style="font-weight:600;color:var(--primary);">E-mail Corporativo</label>
+        <input name="email" type="email" required style="width:100%;margin-bottom:18px;padding:10px;border:1px solid var(--gray);border-radius:6px;">
+        <button type="submit" style="background:var(--primary);color:white;width:100%;padding:12px;font-weight:700;border-radius:var(--radius);border:none;font-size:1.1rem;cursor:pointer;">Solicitar Acesso</button>
+      </form>
+      <div style="color:var(--secondary);margin-top:14px;font-size:0.98rem;">Retornamos em até 1 dia útil.</div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <div>
+        &copy; 2025 AutomizeAI &middot; Potencializado por Azure & IA Generativa
+      </div>
+      <div style="margin-top:8px;font-size:0.9rem;">
+        <a href="mailto:contato@automizeai.com" style="color:#0e9488;text-decoration:none;">contato@automizeai.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
